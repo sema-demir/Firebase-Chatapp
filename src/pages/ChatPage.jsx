@@ -3,9 +3,13 @@ import {
   collection,
   serverTimestamp,
   onSnapshot,
+  query,
+  where,
+  orderBy,
 } from "firebase/firestore";
 import { auth, db } from "../Firebase/config";
 import { useEffect, useState } from "react";
+import Message from "../componentes/Message";
 
 const ChatPage = ({ room, setRoom }) => {
   const [messages, setMessages] = useState([]);
@@ -36,10 +40,16 @@ const ChatPage = ({ room, setRoom }) => {
     // kolleksiyonun referansını al
     const messagesCol = collection(db, "messages");
 
+    const q = query(
+      messagesCol,
+      where("room", "==", room),
+      orderBy("createdAt", "asc")
+    );
+
     // anlık olarak bir kolleksiyondaki değişimleri izler
     // kolleksiyon her değiştiğinde verdiğimiz fonkisyon ile kolleksiyondaki bütün dökümanlara erişiriz yani yeni mesajlara erişiriz
 
-    onSnapshot(messagesCol, (snapshot) => {
+    onSnapshot(q, (snapshot) => {
       // verilerin geçici olarak tutulacağı boş dizi oluştur
       const tempMsg = [];
 
@@ -60,7 +70,9 @@ const ChatPage = ({ room, setRoom }) => {
         <button onClick={() => setRoom(null)}>Farklı Oda</button>
       </header>
       <main>
-        <p>mesaj</p>
+        {messages.map((data, i) => (
+          <Message data={data} key={i} />
+        ))}
       </main>
       <form onSubmit={sendMessage}>
         <input type="text" required placeholder="mesajınızı yazınız" />

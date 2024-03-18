@@ -140,3 +140,49 @@ button {
     background: #f99417;
   }
 }
+.chat-page main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  gap: 10px;
+  padding: 10px;
+
+  &::-webkit-scrollbar {
+    background: transparent;
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #f99417;
+    border-radius: 5px;
+  }
+}
+.msg-other {
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    img {
+      width: 40px;
+      border-radius: 50%;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+.msg-user {
+  background: #f99417;
+  align-self: flex-end;
+  padding: 4px 8px;
+  border-radius: 7px 7px 0 7px;
+}

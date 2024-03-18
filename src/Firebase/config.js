@@ -3,17 +3,17 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "Firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// TODO: Add SDKs for Firebase products that you want to use
+console.log(import.meta.env.VITE_API_KEY);
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBumHftf84Qniy3MCgnR4oWdonu6rOFzXc",
-  authDomain: "chat-b0580.firebaseapp.com",
-  projectId: "chat-b0580",
-  storageBucket: "chat-b0580.appspot.com",
-  messagingSenderId: "847569477523",
-  appId: "1:847569477523:web:d9392109b4efde0068d266",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_SENDER,
+  appId: import.meta.env.VITE_APP,
 };
 
 // Initialize Firebase
