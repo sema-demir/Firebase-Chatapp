@@ -1,4 +1,4 @@
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup } from "Firebase/auth";
 import { auth, provider } from "../Firebase/config";
 
 const AuthPage = ({ setIsAuth }) => {
